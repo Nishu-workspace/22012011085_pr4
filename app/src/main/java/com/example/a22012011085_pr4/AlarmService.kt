@@ -4,24 +4,41 @@ import android.app.Service
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.IBinder
+import android.util.Log
 
 class AlarmService : Service() {
-
-    override fun onBind(intent: Intent): IBinder {
-        TODO("Return the communication channel to the service.")
+    private var mp: MediaPlayer? = null
+    override fun onBind(intent: Intent): IBinder? {
+        return null
     }
 
-    var mp: MediaPlayer? = null
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if(intent != null){
+        val action = intent?.getStringExtra("Service1")
+        Log.d("AlarmService", "Received Action: $action")
+        if(action == "Start"){
+            if (mp == null){
             mp = MediaPlayer.create(this,R.raw.alarm)
+            mp?.isLooping = true
             mp?.start()
+            Log.d("AlarmService", "Alarm Started")
+
+            }
+        }else if(action == "Stop"){
+            mp?.stop()
+            mp?.release()
+            mp = null
+            Log.d("AlarmService", "Alarm Stopped")
+            stopSelf()
         }
         return START_STICKY
     }
 
     override fun onDestroy() {
         mp?.stop()
+        mp?.release()
+        mp = null
+        Log.d("AlarmService", "Service Destroyed")
         super.onDestroy()
     }
 }

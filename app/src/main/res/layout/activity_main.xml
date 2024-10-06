@@ -18,14 +18,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164">
+        app:layout_constraintVertical_bias="0.164"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="30dp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="401dp"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/img1"
                 android:layout_width="410dp"
                 android:layout_height="285dp"
                 android:layout_marginTop="4dp"
@@ -43,10 +46,10 @@
                 android:text="Create Alarm Time"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/img1" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -56,33 +59,34 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tv4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Check current time by looking below digital Clock"
-                app:layout_constraintStart_toStartOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintStart_toStartOf="@+id/tv3"
+                app:layout_constraintTop_toBottomOf="@+id/tv3" />
 
             <TextClock
+                android:id="@+id/tc1"
                 android:layout_width="88dp"
                 android:layout_height="22dp"
                 android:layout_marginStart="84dp"
                 android:format24Hour="mm-dd-yyyy"
-                app:layout_constraintBottom_toBottomOf="@+id/createAlram"
-                app:layout_constraintStart_toEndOf="@+id/createAlram"
-                app:layout_constraintTop_toTopOf="@+id/createAlram" />
+                app:layout_constraintBottom_toBottomOf="@+id/btn1"
+                app:layout_constraintStart_toEndOf="@+id/btn1"
+                app:layout_constraintTop_toTopOf="@+id/btn1" />
 
-            <Button
-                android:id="@+id/createAlram"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-
+                app:icon="@android:drawable/ic_lock_idle_alarm"
                 android:backgroundTint="#53B028"
                 android:text="Create Alarm"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintStart_toStartOf="@+id/tv4"
+                app:layout_constraintTop_toBottomOf="@+id/tv4" />
 
             
 
